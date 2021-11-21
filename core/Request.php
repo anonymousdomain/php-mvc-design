@@ -1,21 +1,23 @@
-<?php 
+<?php
 
-class Request {
+class Request
+{
 
-    public function getPath(){
+    public function getPath()
+    {
 
-        $path=$_SERVER['REQUEST_URI']??'/';
-        $pos=strpos($path,'?');
+        $path = $_SERVER['REQUEST_URI'] ?? '/';
+        $pos = strpos($path, '?');
 
-        if($pos===false){
+        if ($pos === false) {
             return $path;
         }
-        return substr($path,0,$pos);
+        return substr($path, 0, $pos);
     }
 
-    public function getMethod(){
+    public function getMethod()
+    {
 
-
+        return $method = strtolower($_SERVER['REQUEST_METHOD']);
     }
-
 }
