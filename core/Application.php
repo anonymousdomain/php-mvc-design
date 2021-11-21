@@ -4,11 +4,12 @@ use app\core\Request;
 use app\core\Router;
 class Application
 {
-
   public Router $router;
   Public Request $request;
-  public function __construct()
+  public static $ROOT_DIR;
+  public function __construct($rootpath)
   {
+    self::$ROOT_DIR=$rootpath;
     $this->request=new Request();
     $this->router = new Router($this->request);
   }
