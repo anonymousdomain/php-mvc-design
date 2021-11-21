@@ -18,13 +18,7 @@ class Router
 
     public function resolve(){
 
-       // echo "<pre>";
-        //var_dump($_SERVER);
-        //echo "</pre>";
-        $path=$_SERVER['PATH_INFO']??'/';
-        $method=strtolower($_SERVER['REQUEST_METHOD']);
-        $callback=$this->routes[$method][$path];
-
-        call_user_func($callback);
+        
+    
     }
 }
