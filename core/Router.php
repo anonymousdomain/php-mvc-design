@@ -3,6 +3,7 @@
 namespace app\core;
 
 use app\core\Request;
+
 class Router
 {
     public Request $request;
@@ -27,8 +28,11 @@ class Router
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
 
-        $callback=$this->routes[$method][$path];
-        
-       return call_user_func($callback);
+        $callback = $this->routes[$method][$path] ?? false;
+
+        if ($callback === false) {
+            return "page not found";
+        }
+        return call_user_func($callback);
     }
 }
