@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <div class="conatiner">
+  <div class="container">
       <nav>
           <ul>
               <li><a href="/">Home</a></li>
