@@ -33,18 +33,31 @@ class Router
         if ($callback === false) {
             return "page not found";
         }
-        if(is_string($callback)){
+        if (is_string($callback)) {
             return $this->renderView($callback);
         }
         return call_user_func($callback);
     }
 
-    public function renderView($view){
-        $this->layoutContent();
-        include_once __DIR__."/../views/$view.php";
+    public function renderView($view)
+    {
+        $layOutContent = $this->layoutContent();
+        $viewContent = $this->renderOnlyView($view);
+
+        return str_replace('{{content}}',$layOutContent,$viewContent);
     }
 
-    public function layoutContent(){
-        include_once __DIR__."/../views/layouts/main.php";
+    public function layoutContent()
+    {
+        ob_start();
+        include_once __DIR__ . "/../views/layouts/main.php";
+        return ob_get_clean();
+    }
+
+    public function renderOnlyView($view)
+    {
+        ob_start();
+        include_once __DIR__ . "/../views/$view.php";
+        return ob_get_clean();
     }
 }
