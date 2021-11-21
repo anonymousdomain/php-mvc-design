@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+
+    max-width: 1100px;
+    margin: auto;
+}
+
+nav{
+    background-color:#eee;
+    padding: 20px;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+}
+nav li{
+    padding: 10px;
+    margin: 10px;
+}
+
+a{
+   color: #333;
+   text-decoration: none;
+}
+nav a:hover{
+    border-bottom: solid 1px indigo;
+}
