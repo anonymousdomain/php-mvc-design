@@ -32,6 +32,8 @@ nav a:hover{
     border-bottom: solid 1px indigo;
 }
 
+/*register*/
+
 .Register{
     text-align: center;
     border-bottom: 1px solid indigo;
@@ -44,3 +46,26 @@ nav a:hover{
     align-items: center;
     justify-content: center;
 }
+
+.form label{
+    padding: 5px;
+    margin: 5px;
+    display: block; 
+    font-size: 15px;
+    text-align: center;
+    color:black;
+   
+}
+.form input{
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid indigo;
+    border-radius: 5px;
+    
+}
+form input:focus{
+    outline: none;
+}
+
