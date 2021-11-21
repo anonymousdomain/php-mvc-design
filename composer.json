@@ -1,0 +1,15 @@
+{
+    "name": "devo/php-mvc-framework",
+    "authors": [
+        {
+            "name": "anonymousdomain",
+            "email": "domainanonymous1@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "app\\":"./"
+        }
+    },
+    "require": {}
+}
