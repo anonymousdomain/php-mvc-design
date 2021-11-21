@@ -1,8 +1,7 @@
 <?php
 namespace app\core;
-
-use Request;
-
+use app\core\Request;
+use app\core\Router;
 class Application
 {
 
@@ -16,6 +15,7 @@ class Application
 
   public function run(){
     
-   echo  $this->router->resolve();
+   echo $this->router->resolve();
   }
+  
 }
