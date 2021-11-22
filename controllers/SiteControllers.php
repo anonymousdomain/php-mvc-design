@@ -9,7 +9,7 @@ class SiteControllers extends Controller
 {
 
     //get http verb
-    public static function home()
+    public function home()
     {
         $params = [
             'user' => 'Dawit Mekonnen'
@@ -17,9 +17,9 @@ class SiteControllers extends Controller
         return $this->render('home',$params);
     }
     //get
-    public static function showContact()
+    public  function showContact()
     {
-        return Application::$app->router->renderView('contact');
+        return $this->router->render('contact');
     }
 
     //post
