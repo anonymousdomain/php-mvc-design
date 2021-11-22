@@ -1,5 +1,6 @@
 <?php
 
+use app\controllers\SiteControllers;
 use app\core\Application;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -13,6 +14,8 @@ $app->router->get('/', function () {
 $app->router->get('/','Home');
 $app->router->get('/register','register');
 $app->router->get('/contact','contact');
+$app->router->post('/contact',[SiteControllers::class,'handleContact']);
+$app->router->post('/contact',[SiteControllers::class,'showContact']);
 
 
 
