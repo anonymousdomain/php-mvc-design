@@ -30,8 +30,15 @@
         <li class="nav-item">
           <a class="nav-link" href="contact">contact</a>
         </li>
+      </ul>
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/register">Register</a>
+          <a class="nav-link active" href="/register">Register
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
         </li>
       </ul>
     </div>
