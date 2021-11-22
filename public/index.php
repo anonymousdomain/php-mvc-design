@@ -11,7 +11,8 @@ $app->router->get('/', function () {
 });
 
 $app->router->get('/','Home');
-$app->router->get('/users','users');
+$app->router->get('/register','register');
+$app->router->get('/contact','contact');
 
 
 
