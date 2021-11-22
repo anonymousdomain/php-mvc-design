@@ -4,15 +4,16 @@ namespace app\core;
 
 use app\core\Request;
 use app\core\Response;
+
 class Router
 {
     public Request $request;
     public Response $response;
     protected array $routes = [];
-    public function __construct(Request $request,Response $response)
+    public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
-        $this->response=$response;
+        $this->response = $response;
     }
     public function get($path, $callback)
     {
@@ -42,25 +43,30 @@ class Router
         return call_user_func($callback);
     }
 
-    public function renderView($view)
+    public function renderView($view, $params = [])
     {
-        $layOutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyView($view);
 
-        return str_replace('{{content}}',$viewContent,$layOutContent);
+
+        $layOutContent = $this->layoutContent();
+        $viewContent = $this->renderOnlyView($view, $params);
+
+        return str_replace('{{content}}', $viewContent, $layOutContent);
     }
 
     public function layoutContent()
     {
         ob_start();
-        include_once Application::$ROOT_DIR. "/views/layouts/main.php";
+        include_once Application::$ROOT_DIR . "/views/layouts/main.php";
         return ob_get_clean();
     }
 
-    public function renderOnlyView($view)
+    public function renderOnlyView($view, $params)
     {
+        foreach ($params as $key => $value) {
+            $$key = $value;
+        }
         ob_start();
-        include_once Application::$ROOT_DIR. "/views/$view.php";
+        include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();
     }
 }
