@@ -2,11 +2,19 @@
 
 namespace app\models;
 
-class RegisterModel{
+use app\core\Model;
 
-    public string $firstName;
+class RegisterModel extends Model
+{
+
+    public string $firstname;
     public string $lastname;
     public string $email;
-    public string $passwoed;
+    public string $password;
     public string $confirmPassword;
+
+    public function register()
+    {
+        echo "create";
+    }
 }
