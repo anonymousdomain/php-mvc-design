@@ -5,15 +5,16 @@ namespace app\core;
 use app\core\Request;
 use app\core\Router;
 use app\core\Response;
-
 class Application
 {
   public Router $router;
   public Request $request;
   public static $ROOT_DIR;
   public Response $response;
+  public static $app;
   public function __construct($rootpath)
   {
+    self::$app=$this;
     self::$ROOT_DIR = $rootpath;
     $this->request = new Request();
     $this->response = new Response();
