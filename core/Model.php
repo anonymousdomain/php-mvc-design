@@ -40,37 +40,24 @@ abstract class Model
                 if ($rulename === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
                     $this->addError($attribute, self::RULE_EMAIL);
                 }
-                if ($rulename === self::RULE_MIN && strlen($value) < $rule['min']) {
-                    $this->addError($attribute, self::RULE_MIN, $rule);
-                }
-                if ($rulename === self::RULE_MAX  && strlen($value) > $rule['max']) {
-                    $this->addError($attribute, self::RULE_MAX, $rule);
-                }
-                if ($rulename === self::RULE_MATCH  && $value !== $this->{$rule['match']}) {
-                    $this->addError($attribute, self::RULE_MATCH, $rule);
-                }
-                if ($rulename === self::RULE_UNIQUE) {
-                    $className = $rule['class'];
-                    $uniqueAttr = $rule['attribute'] ?? $attribute;
-                    $tableName = $className::tableName();
-                    $statement = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $uniqueAttr=:attr");
-                    $statement->bindValue(":attr", $value);
-                    $statement->execute(); 
-                    $record = $statement->fetchObject();
-
-                    if($record){
-                        $this->addError($attribute,self::RULE_UNIQUE,['field'=>$attribute]);
-                    }
+                if ($rulename === self::RULE_MIN && strlen($value)<$rule['min'])  {
+                    $this->addError($attribute, self::RULE_MIN,$rule);
+                } 
+                if ($rulename === self::RULE_MAX  && strlen($value)>$rule['max'])  {
+                    $this->addError($attribute, self::RULE_MAX,$rule);
+                } 
+                if ($rulename === self::RULE_MATCH  && $value!==$this->{$rule['match']})  {
+                    $this->addError($attribute, self::RULE_MATCH,$rule);
                 }
             }
         }
         return empty($this->errors);
     }
-    public function addError(string $attribute, string $rule, $params = [])
+    public function addError(string $attribute, string $rule,$params=[])
     {
         $message = $this->errorMessages()[$rule] ?? '';
-        foreach ($params as $key => $value) {
-            $message = str_replace("{{$key}}", $value, $message);
+        foreach($params as $key=>$value){
+            $message=str_replace("{{$key}}",$value,$message);
         }
         $this->errors[$attribute][] = $message;
     }
@@ -83,17 +70,15 @@ abstract class Model
             self::RULE_MIN => 'min length of this field must be {min}',
             self::RULE_MATCH => 'max length of this field must be {max}',
             self::RULE_MATCH => 'this filed must be the same as {match}',
-            self::RULE_UNIQUE => 'user already loged in with {field}'
+            self::RULE_UNIQUE => 'user already loged in with this account'
         ];
     }
 
-    public function hasError($attribute)
-    {
-        return $this->errors[$attribute] ?? false;
+    public function hasError($attribute){
+        return $this->errors[$attribute]??false;
     }
 
-    public function getFirstError($attribute)
-    {
-        return $this->errors[$attribute][0] ?? false;
+    public function getFirstError($attribute){
+        return $this->errors[$attribute][0]??false;
     }
 }
