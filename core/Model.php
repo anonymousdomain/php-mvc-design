@@ -61,7 +61,7 @@ abstract class Model
                     if($record){
                         $this->addError($attribute,self::RULE_UNIQUE,['field'=>$attribute]);
                     }
-                }
+                } 
             }
         }
         return empty($this->errors);
