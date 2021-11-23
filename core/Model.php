@@ -21,7 +21,10 @@ abstract class Model
     }
 
     abstract public function rules(): array;
-
+    public function lables()
+    {
+        return [];
+    }
     public array $errors = [];
     public function validate()
     {
@@ -47,6 +50,7 @@ abstract class Model
                     $this->addError($attribute, self::RULE_MAX, $rule);
                 }
                 if ($rulename === self::RULE_MATCH  && $value !== $this->{$rule['match']}) {
+                    $rule['match']=$this->lables()[$rule['match']];
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
                 if ($rulename === self::RULE_UNIQUE) {
@@ -55,13 +59,13 @@ abstract class Model
                     $tableName = $className::tableName();
                     $statement = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $uniqueAttr=:attr");
                     $statement->bindValue(":attr", $value);
-                    $statement->execute(); 
+                    $statement->execute();
                     $record = $statement->fetchObject();
 
-                    if($record){
-                        $this->addError($attribute,self::RULE_UNIQUE,['field'=>$attribute]);
+                    if ($record) {
+                        $this->addError($attribute, self::RULE_UNIQUE, ['field' =>$this->lables()[$attribute]]);
                     }
-                } 
+                }
             }
         }
         return empty($this->errors);
@@ -83,7 +87,7 @@ abstract class Model
             self::RULE_MIN => 'min length of this field must be {min}',
             self::RULE_MATCH => 'max length of this field must be {max}',
             self::RULE_MATCH => 'this filed must be the same as {match}',
-            self::RULE_UNIQUE => 'user already loged in with {field}'
+            self::RULE_UNIQUE => 'user already loged in with this {field}'
         ];
     }
 
