@@ -70,4 +70,8 @@ class Database
     public function log($message){
        echo '['.date('Y-m-d H:i:s').']-'.$message.PHP_EOL; 
     }
+
+    public function prepare($sql){
+        return Application::$app->db->pdo->prepare($sql);
+    }
 }
