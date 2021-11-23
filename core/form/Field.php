@@ -38,8 +38,8 @@ public string $type;
         );
     }
 
-    public function passwordField($password){
-        $this->type=$password;
+    public function typeField($type){
+        $this->type=$type;
         return $this;
     }
 }
