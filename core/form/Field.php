@@ -6,16 +6,14 @@ use app\core\Model;
 
 class Field
 {
-    public const TYPE_TEXT='text';
-    public const TYPE_PASSWORD='password';
-    public const TYPE_NUMBER='number';
+   
 public string $type;
     public Model $model;
     public string $attribute;
 
     public function __construct(Model $model, string $attribute)
     {
-        $this->type=self::TYPE_TEXT;
+        $this->type='text';
         $this->model = $model;
         $this->attribute = $attribute;
     }
@@ -40,8 +38,8 @@ public string $type;
         );
     }
 
-    public function passwordField(){
-        $this->type=self::TYPE_PASSWORD;
+    public function passwordField($password){
+        $this->type=$password;
         return $this;
     }
 }

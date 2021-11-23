@@ -13,8 +13,8 @@
 
 
 <?php echo $form->field($model,'email') ?>
-<?php echo $form->field($model,'password')->passwordField()?>
-<?php echo $form->field($model,'confirmPassword')->passwordField() ?>
+<?php echo $form->field($model,'password')->passwordField('password')?>
+<?php echo $form->field($model,'confirmPassword')->passwordField('password') ?>
 <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">submit</button>
 <?php \app\core\form\Form::end()?>
 </div>
