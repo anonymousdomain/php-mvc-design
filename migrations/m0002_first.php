@@ -1,8 +1,8 @@
 <?php
 
+ 
 
-
- class m0001_first{
+ class m0002_first{
 
 
     public function up(){
