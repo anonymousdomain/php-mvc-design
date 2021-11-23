@@ -15,14 +15,14 @@ class Application
   public static $app;
   public Controller $controller;
   public Database $db;
-  public function __construct($rootpath)
+  public function __construct($rootpath,array $config)
   {
     self::$app = $this;
     self::$ROOT_DIR = $rootpath;
     $this->request = new Request();
     $this->response = new Response();
     $this->router = new Router($this->request, $this->response);
-    $this->db=new Database();
+    $this->db=new Database($config['db']);
   }
 
   public function run()
