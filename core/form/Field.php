@@ -29,7 +29,7 @@ public string $type;
           <div class="invalid-feedback">%s</div>
         </div> 
         ',
-            $this->model->lables()[$this->attribute]??$this->attribute,
+            $this->attribute,
             $this->type,
             $this->attribute,
             $this->model->{$this->attribute},
