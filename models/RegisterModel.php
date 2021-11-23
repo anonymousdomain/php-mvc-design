@@ -20,6 +20,7 @@ class RegisterModel extends DbModel
     }
     public function register()
     {
+        $this->password=password_hash($this->password,PASSWORD_DEFAULT);
        return $this->save();
     }
 
