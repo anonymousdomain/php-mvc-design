@@ -31,13 +31,13 @@ class Database
             require_once Application::$ROOT_DIR . '/migrations/' . $migration;
             $className = pathinfo($migration, PATHINFO_FILENAME);
             $migrate = new $className();
-            echo "Applying migrations $migration" . PHP_EOL;
+            $this->log("Applying migrations $migration");
             $migrate->up();
-            echo "Applied migrations $migration" . PHP_EOL;
+            $this->log("Applied migrations $migration");
             $newMigrations[] = $migration;
         }
         if (empty($newMigrations)) {
-            echo "all migrations are applied";
+            $this->log("all migrations are applied");
         } else {
             $this->saveMigrations($newMigrations);
         }
@@ -65,5 +65,9 @@ class Database
        $str
        ");
         $statement->execute();
+    }
+
+    public function log($message){
+       echo '['.date('Y-m-d H:i:s').']-'.$message.PHP_EOL; 
     }
 }
