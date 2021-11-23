@@ -2,8 +2,6 @@
 
 namespace app\core;
 
-use Attribute;
-
 abstract class Model
 {
 
@@ -74,5 +72,13 @@ abstract class Model
             self::RULE_MATCH => 'this filed must be the same as {match}',
             self::RULE_UNIQUE => 'user already loged in with this account'
         ];
+    }
+
+    public function hasError($attribute){
+        return $this->errors[$attribute]??false;
+    }
+
+    public function getFirstError($attribute){
+        return $this->errors[$attribute][0]??false;
     }
 }
