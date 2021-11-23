@@ -1,16 +1,29 @@
 <?php
 
+use app\core\Application;
+
+class m0001_first
+{
 
 
- class m0001_first{
+    public function up()
+    {
 
-
-    public function up(){
-
-        echo "migrated".PHP_EOL;
+        $db = Application::$app->db;
+        $sql = "CREATE TABLE users(id INT AUTO_INCREMENT primary key,
+      email VARCHAR(255) NOT NULL,
+      firstname VARCHAR(255) NOT NULL,
+      lastname VARCHAR(255) NOT NULL,
+      status TINYINT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   
+      )ENGINE=INNODB;";
+        $db->pdo->exec($sql);
     }
-    public function down(){
-
-        echo "down migrate".PHP_EOL;
+    public function down()
+    {
+        $db = Application::$app->db;
+        $sql = "CREATE TABLE users";
+        $db->pdo->exec($sql); 
     }
- }
+}
