@@ -11,6 +11,10 @@ use app\models\RegisterModel;
 
 class AuthControllers extends Controller
 {
+    public function __construct()
+    {
+        $this->registerMiddleware(new AuthMiddleware(['profile']));
+    }
 
     public function login(Request $request, Response $response)
     {

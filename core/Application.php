@@ -8,6 +8,7 @@ use app\core\Response;
 
 class Application
 {
+  public string $layout = 'main';
   public Router $router;
   public Request $request;
   public static $ROOT_DIR;
@@ -39,7 +40,7 @@ class Application
     }
   }
 
- 
+
   public function getController()
   {
     return $this->controller;
@@ -63,7 +64,8 @@ class Application
     $this->user = null;
     $this->session->remove('user');
   }
-  public static function isGuest(){
+  public static function isGuest()
+  {
     return !self::$app->user;
   }
   public function run()
@@ -71,5 +73,4 @@ class Application
 
     echo $this->router->resolve();
   }
-
 }
