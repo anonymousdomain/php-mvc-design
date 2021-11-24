@@ -26,8 +26,8 @@ $app = new Application(dirname(__DIR__), $config);
 
 //sitecontrollers
 $app->router->get('/', [SiteControllers::class, 'home']);
-$app->router->post('/contact', [SiteControllers::class, 'handleContact']);
-$app->router->get('/contact', [SiteControllers::class, 'showContact']);
+$app->router->post('/contact', [SiteControllers::class, 'contact']);
+$app->router->get('/contact', [SiteControllers::class, 'contact']);
 
 //authControllers
 $app->router->get('/login', [AuthControllers::class, 'login']);
