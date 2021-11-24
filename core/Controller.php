@@ -9,6 +9,7 @@ class Controller
     /**@var app\core\middlewares\BaseMiddleware[] */
 
     public array $middlewares = [];
+    public string $action='';
     public string $layout = 'main';
     public function setLayout($layout)
     {

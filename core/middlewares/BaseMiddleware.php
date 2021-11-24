@@ -3,7 +3,8 @@
 namespace app\core\middlewares;
 
 
-class BaseMiddleware{
+abstract class BaseMiddleware{
 
-    
+    abstract protected function execute();
+
 }
