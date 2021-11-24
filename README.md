@@ -1,2 +1,11 @@
 # php-mvc-design
-I will use this project to thought my self  more about php and  to understand how the php framework works 
+#clone this repo
+#create .env file
+#if you are on windows and using my sql database copy database config from .env_example file and paste it to .env file
+#run composer install 
+#run composer require dawit/mvc-core
+#and you should be good to go 
+#finally to test the frame work navigate to public folder from terminal and run the following command
+$ php -S localhost:8000
+click ctrl +mouseclick
+and you should the homepage in the browser
