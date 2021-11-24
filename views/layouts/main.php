@@ -44,8 +44,8 @@ use app\core\Application;
       <?php else: ?>
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="/logout">Welcome<?php echo Application::$app->user->getName()?>
-        Logout</a>
+          <a class="nav-link active" href="/logout">Welcome <?php echo Application::$app->user->getName()?>
+         Logout</a>
         </li>
       </ul>
       <?php endif;?>

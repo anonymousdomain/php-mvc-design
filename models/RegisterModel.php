@@ -4,8 +4,9 @@ namespace app\models;
 
 use app\core\DbModel;
 use app\core\Model;
+use app\core\UserModel;
 
-class RegisterModel extends DbModel
+class RegisterModel extends UserModel
 {
      const ACTIVE = 1;
      const IN_ACTIVE = 0;
@@ -59,5 +60,9 @@ class RegisterModel extends DbModel
             'password'=>'Password',
             'confirmPassword'=>'Confirm Password'
         ];
+    }
+    public function getName(): string
+    {
+        return $this->firstname.' '. $this->lastname;
     }
 }
