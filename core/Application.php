@@ -16,6 +16,7 @@ class Application
   public Controller $controller;
   public Database $db;
   public Session $session;
+  public DbModel $user;
   public function __construct($rootpath,array $config)
   {
     self::$app = $this;
@@ -40,5 +41,13 @@ class Application
   {
     $this->controller=$controller;
 
+  }
+
+  public function login(DbModel $user){
+    $this->user=$user;
+    $primaryKey=$user->primaryKey();
+    $primaryValue=$user->{$primaryKey};
+    //set session
+    $this->session->set('user',$primaryValue);
   }
 }
