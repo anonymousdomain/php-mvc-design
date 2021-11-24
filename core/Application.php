@@ -14,7 +14,7 @@ class Application
   public static $ROOT_DIR;
   public Response $response;
   public static $app;
-  public Controller $controller;
+  public ?Controller $controller=null;
   public Database $db;
   public Session $session;
   public ?DbModel $user;
@@ -73,6 +73,7 @@ class Application
     try {
       echo $this->router->resolve();
     } catch (\Exception $e) {
+      $this->response->setStatusCode($e->getCode());
       echo $this->router->renderView('_error',[
         'exception'=>$e
       ]);
