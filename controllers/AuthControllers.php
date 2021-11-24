@@ -52,4 +52,9 @@ class AuthControllers extends Controller
             'model' => $registerModel
         ]);
     }
+
+    public function logout(Request $req,Response $res){
+        Application::$app->logout();
+        $res->redirect('/');
+    }
 }
