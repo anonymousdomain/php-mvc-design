@@ -8,7 +8,7 @@ use app\core\Request;
 use app\core\Response;
 use app\models\LoginModel;
 use app\models\RegisterModel;
-
+use app\core\middlewares\AuthMiddleware;
 class AuthControllers extends Controller
 {
     public function __construct()

@@ -4,7 +4,7 @@ namespace app\core\middlewares;
 
 use app\core\Application;
 use app\core\exception\UnAuth;
-use Exception;
+
 
 class AuthMiddleware extends BaseMiddleware
 {
@@ -14,7 +14,7 @@ class AuthMiddleware extends BaseMiddleware
     {
         $this->actions = $actions;
     }
-    protected function execute()
+    public function execute()
     {
         if (Application::isGuest()) {
             if (empty($this->actions) || in_array(Application::$app->controller->action, $this->actions)) {

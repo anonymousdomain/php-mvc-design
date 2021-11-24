@@ -70,7 +70,12 @@ class Application
   }
   public function run()
   {
-
-    echo $this->router->resolve();
+    try {
+      echo $this->router->resolve();
+    } catch (\Exception $e) {
+      echo $this->router->renderView('_error',[
+        'exception'=>$e
+      ]);
+    }
   }
 }
