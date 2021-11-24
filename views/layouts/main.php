@@ -1,9 +1,6 @@
 <?php
 
 use app\core\Application;
-echo '<pre>';
-var_dump(Application::$app->user);
-echo'</pre>';
 ?>
    <!DOCTYPE html>
 <html lang="en">
@@ -28,23 +25,30 @@ echo'</pre>';
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" href="/">Home
-            <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="contact">contact</a>
         </li>
       </ul>
+      <?php if(Application::isGuest()):?>
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
           <a class="nav-link active" href="/register">Register
-            <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="login">Login</a>
         </li>
       </ul>
+      <?php else: ?>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="/logout">Welcome<?php echo Application::$app->user->getName()?>
+        Logout</a>
+        </li>
+      </ul>
+      <?php endif;?>
     </div>
   </div>
 </nav>

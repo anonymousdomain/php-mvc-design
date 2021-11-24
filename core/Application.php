@@ -39,12 +39,7 @@ class Application
     }
   }
 
-  public function run()
-  {
-
-    echo $this->router->resolve();
-  }
-
+ 
   public function getController()
   {
     return $this->controller;
@@ -68,4 +63,13 @@ class Application
     $this->user = null;
     $this->session->remove('user');
   }
+  public static function isGuest(){
+    return !self::$app->user;
+  }
+  public function run()
+  {
+
+    echo $this->router->resolve();
+  }
+
 }
