@@ -1,18 +1,15 @@
 {
-    "name": "devo/php-mvc-framework",
+    "name": "dawit/mvc-core",
     "authors": [
         {
             "name": "anonymousdomain",
             "email": "domainanonymous1@gmail.com"
         }
     ],
-    "autoload":{
+    "autoload": {
         "psr-4":{
-            "app\\":"./"
+            "app\\core\\":"./"
         }
     },
-    "require": {
-        "vlucas/phpdotenv": "^5.4",
-        "dawit/mvc-core": "^1.0"
-    }
+    "require": {}
 }
