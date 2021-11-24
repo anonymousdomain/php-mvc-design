@@ -17,8 +17,10 @@ class Application
   public Database $db;
   public Session $session;
   public DbModel $user;
+  public string $userClass;
   public function __construct($rootpath,array $config)
   {
+    $this->userClass=$config['userClass'];
     self::$app = $this;
     self::$ROOT_DIR = $rootpath;
     $this->request = new Request();
