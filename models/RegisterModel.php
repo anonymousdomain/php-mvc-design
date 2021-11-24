@@ -17,7 +17,7 @@ class RegisterModel extends DbModel
     public string $password = '';
     public string $confirmPassword = '';
     public int $status=self::ACTIVE;
-    public function primaryKey(): string
+    public static function primaryKey(): string
     {
         return 'id';
     }

@@ -19,6 +19,7 @@ class AuthControllers extends Controller
             $loginModel->loadData($request->getBody());
             if ($loginModel->validate() && $loginModel->login()) {
                 $response->redirect('/');
+                return ;
             }
         }
         $this->setLayout('auth');
