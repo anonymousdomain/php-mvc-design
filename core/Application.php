@@ -5,7 +5,8 @@ namespace app\core;
 use app\core\Request;
 use app\core\Router;
 use app\core\Response;
-
+use app\core\database\Database;
+use app\core\database\DbModel;
 class Application
 {
   public string $layout = 'main';

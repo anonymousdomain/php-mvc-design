@@ -1,7 +1,7 @@
 <?php
 
-namespace app\core;
-
+namespace app\core\database;
+use app\core\Application;
 use PDO;
 
 class Database
