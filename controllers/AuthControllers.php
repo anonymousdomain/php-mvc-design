@@ -23,7 +23,7 @@ class AuthControllers extends Controller
         }
         $this->setLayout('auth');
         return $this->render('Login',[
-            'loginModel'=>$loginModel
+            'model'=>$loginModel
         ]);
     }
 

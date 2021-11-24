@@ -7,8 +7,8 @@ use app\core\Model;
 
 class LoginModel extends Model{
 
-    public string $email;
-    public string $password;
+    public string $email='';
+    public string $password='';
 
 
     public function rules(): array
@@ -19,6 +19,14 @@ class LoginModel extends Model{
         ];
     }
 
+    public function lables()
+    {
+        return [
+            'email'=>'Your Email',
+            'password'=>'Password'
+        ];
+    }
+
     public function login(){
         $user=RegisterModel::findOne(['email'=>$this->email]);
         if(!$user){
@@ -26,10 +34,12 @@ class LoginModel extends Model{
             return false;
         }
         if(!password_verify($this->password,$user->password)){
-            $this->addError('email','user does not exist with this email');
+            $this->addError('password','Your password is incorrect');
             return false;
         }
-
+echo '<pre>';
+var_dump($user);
+echo'</pre>';
         //auth user
        return Application::$app->login($user);
     }

@@ -4,7 +4,7 @@ namespace app\core;
 
 abstract class DbModel extends Model
 {
-    abstract public function tableName(): string;
+    abstract static public function tableName(): string;
     abstract public function attribute(): array;
     public function save()
     {
@@ -20,12 +20,12 @@ abstract class DbModel extends Model
         return true;
     }
 
-    public  function findOne($where)
+    public static function findOne($where)
     {
         $tableName = static::tableName();
         $attributes = array_keys($where);
         $sql = implode("AND", array_map(fn ($attr) => "$attr=:$attr", $attributes));
-        $statment = self::prepare("SELCET * FROM $tableName WHERE $sql");
+        $statment = self::prepare("SELECT * FROM $tableName WHERE $sql");
         foreach ($where as $key => $value) {
             $statment->bindValue(":$key", $value);
         }

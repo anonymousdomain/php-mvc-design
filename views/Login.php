@@ -1,16 +1,9 @@
-<?php
-?>
-
 <div class="container">
+  <h1 class="text-center">Login</h1>
 
-<form action="">
-<div class="form-group">
-      <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-    <div class="form-group">
-      <label for="password" class="form-label mt-4">Password</label>
-      <input type="password" name="password" class="form-control" id="password" placeholder="Password">
-    </div>
-</form>
+  <?php $form = \app\core\form\Form::begin('', "post") ?>
+  <?php echo $form->field($model, 'email') ?>
+  <?php echo $form->field($model, 'password')->typeField('password') ?>
+  <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">submit</button>
+  <?php \app\core\form\Form::end() ?>
 </div>
