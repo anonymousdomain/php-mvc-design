@@ -29,6 +29,6 @@ class ContactForm extends Model{
  }
 
  public function send(){
-     return ;
+     return true;
  }
 }

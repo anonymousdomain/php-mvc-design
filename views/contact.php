@@ -1,4 +1,5 @@
 <?php
+
 /** @var $model \app\models\ContactForm */
 ?>
 <div class="container">
@@ -7,8 +8,8 @@
 
   <?php echo $form->field($model, 'email') ?>
   <?php echo $form->field($model, 'password')->typeField('password') ?>
-  <?php echo $form->field($model, 'body')->typeField('textarea') ?>
+  <?php echo new app\core\form\TextAreaField($model, 'body') ?>
   <button type="submit" class="btn btn-primary btn-lg btn-block mt-4">submit</button>
- 
+
   <?php \app\core\form\Form::end() ?>
 </div>
