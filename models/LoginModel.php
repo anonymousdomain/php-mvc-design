@@ -37,9 +37,7 @@ class LoginModel extends Model{
             $this->addError('password','Your password is incorrect');
             return false;
         }
-echo '<pre>';
-var_dump($user);
-echo'</pre>';
+
         //auth user
        return Application::$app->login($user);
     }
