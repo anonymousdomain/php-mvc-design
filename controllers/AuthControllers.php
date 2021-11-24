@@ -22,7 +22,9 @@ class AuthControllers extends Controller
             }
         }
         $this->setLayout('auth');
-        return $this->render('Login');
+        return $this->render('Login',[
+            'loginModel'=>$loginModel
+        ]);
     }
 
     public function register(Request $request)
