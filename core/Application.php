@@ -28,6 +28,14 @@ class Application
     $this->router = new Router($this->request, $this->response);
     $this->db=new Database($config['db']);
     $this->session=new Session();
+
+    //get primary key value from a session
+    $primaryValue=$this->session->get('user');
+    if($primaryValue){
+      $primaryKey=$this->userClass::primaryKey();
+     $this->user= $this->userClass::findOne([$primaryKey=>$primaryValue]);
+    }
+
   }
 
   public function run()
